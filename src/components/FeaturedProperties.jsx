@@ -2,7 +2,7 @@
 import React from 'react';
 import PropertyCard from './PropertyCard';
 
-// Mock data for featured properties
+
 const featuredProperties = [
   {
     id: 1,

@@ -9,20 +9,20 @@ const SearchSection = () => {
   const [priceRange, setPriceRange] = useState('');
   const [bedrooms, setBedrooms] = useState('');
   
-  // Auto-search when any filter changes
+  
   const handleFilterChange = (name: string, value: string) => {
     let newLocation = name === 'location' ? value : location;
     let newPropertyType = name === 'propertyType' ? value : propertyType;
     let newPriceRange = name === 'priceRange' ? value : priceRange;
     let newBedrooms = name === 'bedrooms' ? value : bedrooms;
     
-    // Update state
+    
     if (name === 'location') setLocation(value);
     if (name === 'propertyType') setPropertyType(value);
     if (name === 'priceRange') setPriceRange(value);
     if (name === 'bedrooms') setBedrooms(value);
     
-    // Construct search params for navigation (only if coming from home page)
+    
     const searchParams = new URLSearchParams();
     if (newLocation) searchParams.append('location', newLocation);
     if (newPropertyType) searchParams.append('type', newPropertyType);

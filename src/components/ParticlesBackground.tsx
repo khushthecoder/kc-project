@@ -19,17 +19,17 @@ const ParticlesBackground = ({ className = "" }: ParticlesBackgroundProps) => {
     let animationFrameId: number;
     let particles: Particle[] = [];
 
-    // Setup canvas sizing
+    
     const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      initParticles(); // Re-initialize particles when resizing
+      initParticles(); 
     };
 
     window.addEventListener("resize", handleResize);
     handleResize();
 
-    // Mouse interaction
+    
     const mouse = { x: null as number | null, y: null as number | null, radius: 150 };
 
     document.addEventListener("mousemove", (e) => {
@@ -42,7 +42,7 @@ const ParticlesBackground = ({ className = "" }: ParticlesBackgroundProps) => {
       mouse.y = null;
     });
 
-    // Particle class
+    
     class Particle {
       x: number;
       y: number;
@@ -75,11 +75,11 @@ const ParticlesBackground = ({ className = "" }: ParticlesBackgroundProps) => {
       }
 
       update() {
-        // Slight movement even without mouse interaction
+        
         this.x += Math.sin(Date.now() * 0.001 * this.speed) * 0.5 * this.direction;
         this.y += Math.cos(Date.now() * 0.001 * this.speed) * 0.5 * this.direction;
 
-        // Mouse interaction
+        
         if (mouse.x !== null && mouse.y !== null) {
           const dx = mouse.x - this.x;
           const dy = mouse.y - this.y;
@@ -95,18 +95,18 @@ const ParticlesBackground = ({ className = "" }: ParticlesBackgroundProps) => {
           }
         }
         
-        // Return to original position
+        
         const dx = this.baseX - this.x;
         const dy = this.baseY - this.y;
         this.x += dx * 0.01;
         this.y += dy * 0.01;
         
-        // Draw the particle
+        
         this.draw();
       }
     }
 
-    // Create particle array
+    
     function initParticles() {
       particles = [];
       const numberOfParticles = Math.min(Math.floor((canvas.width * canvas.height) / 9000), 200);
@@ -116,7 +116,7 @@ const ParticlesBackground = ({ className = "" }: ParticlesBackgroundProps) => {
       }
     }
 
-    // Animation loop
+    
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -124,13 +124,13 @@ const ParticlesBackground = ({ className = "" }: ParticlesBackgroundProps) => {
         particle.update();
       }
       
-      // Connect particles with lines
+      
       connectParticles();
       
       animationFrameId = requestAnimationFrame(animate);
     }
 
-    // Draw lines between nearby particles
+    
     function connectParticles() {
       const maxDistance = 150;
       
@@ -152,11 +152,11 @@ const ParticlesBackground = ({ className = "" }: ParticlesBackgroundProps) => {
       }
     }
 
-    // Start the animation
+    
     initParticles();
     animate();
 
-    // Cleanup
+    
     return () => {
       window.removeEventListener("resize", handleResize);
       document.removeEventListener("mousemove", () => {});

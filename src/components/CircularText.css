@@ -1,4 +1,3 @@
-
 .circular-text {
   position: relative;
   width: 150px;
@@ -42,4 +41,13 @@
   line-height: 1;
   position: static;
   transform: none;
+}
+
+.circular-logo-large {
+  width: 220px;
+  height: 220px;
+}
+
+.circular-logo-large span {
+  font-size: 28px;
 }

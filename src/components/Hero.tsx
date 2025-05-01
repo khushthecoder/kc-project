@@ -13,7 +13,7 @@ const Hero = () => {
         }}
       ></div>
       
-      {/* Overlay gradient to ensure text visibility over particles */}
+      
       <div className="absolute inset-0 bg-gradient-to-r from-luxury-navy/80 to-transparent"></div>
 
       <div className="luxury-container relative z-10 text-white">

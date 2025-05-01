@@ -19,7 +19,7 @@ const Navbar = () => {
             <span className="ml-2 text-xs uppercase tracking-widest text-luxury-gold">Refined Homes</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          
           <div className="hidden md:flex space-x-8">
             <Link to="/" className="font-medium text-gray-700 hover:text-luxury-navy transition-colors">Home</Link>
             <Link to="/about" className="font-medium text-gray-700 hover:text-luxury-navy transition-colors">About</Link>
@@ -28,7 +28,7 @@ const Navbar = () => {
             <Link to="/contact" className="font-medium text-gray-700 hover:text-luxury-navy transition-colors">Contact</Link>
           </div>
 
-          {/* Mobile Navigation Toggle */}
+          
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
@@ -40,7 +40,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t">
             <div className="flex flex-col space-y-4">
