@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
@@ -21,12 +22,12 @@ const Hero = () => {
                     those who appreciate the finer things in life.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-delayed">
-                    <a href="/buy" className="btn-primary">
+                    <Link to="/buy" className="btn-primary">
                         Explore Collection
-                    </a>
-                    <a href="/contact" className="btn-secondary">
+                    </Link>
+                    <Link to="/contact" className="btn-secondary">
                         Private Consultation
-                    </a>
+                    </Link>
                 </div>
             </div>
 
