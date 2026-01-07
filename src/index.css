@@ -1,11 +1,9 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Dark Futuristic Theme */
 body {
   background: #0c0f1d;
   min-height: 100vh;
@@ -35,8 +33,7 @@ body {
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    
-    /* Adding sidebar theme support */
+
     --sidebar-background: 225 30% 10%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 47 95% 63%;
@@ -45,8 +42,7 @@ body {
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 217.2 32.6% 25%;
     --sidebar-ring: 212.7 26.8% 83.9%;
-    
-    /* Radius */
+
     --radius: 0.5rem;
   }
 }
@@ -60,11 +56,22 @@ body {
     @apply bg-background text-foreground;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-serif;
   }
 
-  p, span, a, button, input, textarea, select {
+  p,
+  span,
+  a,
+  button,
+  input,
+  textarea,
+  select {
     @apply font-sans;
   }
 }
@@ -73,44 +80,44 @@ body {
   .luxury-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-  
+
   .section-title {
     @apply text-3xl md:text-4xl font-serif font-semibold text-luxury-gold;
   }
-  
+
   .property-card {
     @apply bg-luxury-navy border border-luxury-gold/20 rounded-md overflow-hidden shadow-md hover:shadow-lg hover:shadow-luxury-gold/10 transition-all duration-300;
   }
-  
+
   .btn-primary {
-    @apply px-6 py-3 bg-luxury-gold text-luxury-navy font-medium rounded-md hover:bg-opacity-90 transition-colors duration-300;
+    @apply px-6 py-3 bg-luxury-gold text-luxury-navy font-medium rounded-md transition-all duration-300 transform active:scale-95 hover:bg-opacity-90 hover:shadow-luxury-glow;
   }
-  
+
   .btn-secondary {
-    @apply px-6 py-3 border border-luxury-gold text-luxury-gold font-medium rounded-md hover:bg-luxury-gold hover:bg-opacity-20 transition-colors duration-300;
+    @apply px-6 py-3 border border-luxury-gold text-luxury-gold font-medium rounded-md transition-all duration-300 transform active:scale-95 hover:bg-luxury-gold hover:bg-opacity-20 hover:shadow-luxury-glow-soft;
   }
-  
-  /* Futuristic glass effect */
+
   .glass-card {
     @apply backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg;
   }
-  
-  /* Glow effect for hover */
+
   .glow-hover {
     @apply relative transition-all duration-300;
     box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
   }
-  
+
   .glow-hover:hover {
     box-shadow: 0 0 20px 2px rgba(212, 175, 55, 0.3);
   }
 }
 
-/* Futuristic animation effects */
 @keyframes pulse-gold {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.6;
   }
@@ -118,4 +125,165 @@ body {
 
 .animate-pulse-gold {
   animation: pulse-gold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+
+:root {
+  --page-bg: #0c0f1d;
+  --surface-bg: #131c33;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --brand-logo: #EFEDE4;
+  --brand-subtitle: #D4AF37;
+  --nav-surface: #131c33;
+  --nav-border: rgba(212, 175, 55, 0.3);
+  --nav-text: #EFEDE4;
+  --nav-text-hover: #D4AF37;
+}
+
+html.light {
+  --page-bg: #f8f9fa;
+  --surface-bg: #ffffff;
+  --card-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --text-main: #0c0f1d;
+  --text-muted: #475569;
+  --brand-logo: #131C33;
+  --nav-surface: #ffffff;
+  --nav-border: rgba(0, 0, 0, 0.1);
+  --nav-text: #131C33;
+  --nav-text-hover: #D4AF37;
+
+  --background: 210 20% 98%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --border: 214.3 31.8% 91.4%;
+}
+
+html,
+body,
+#root {
+  background-color: var(--page-bg) !important;
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section,
+.bg-luxury-silver,
+.bg-luxury-charcoal,
+.bg-luxury-navy {
+  background-color: var(--page-bg) !important;
+  transition: background-color 0.3s ease;
+}
+
+.property-card {
+  background-color: var(--surface-bg) !important;
+  box-shadow: var(--card-shadow) !important;
+  border-color: rgba(212, 175, 55, 0.2) !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+html.light .property-card {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not(.light) .property-card {
+  background-color: #1a233a !important;
+}
+
+.text-white,
+.text-gray-100,
+.text-gray-300,
+.section-title {
+  color: var(--text-main) !important;
+}
+
+.text-gray-400,
+.text-gray-500,
+.text-gray-600 {
+  color: var(--text-muted) !important;
+}
+
+.border-t,
+.border-b,
+.border {
+  border-color: rgba(212, 175, 55, 0.2) !important;
+}
+
+html.light .border-t,
+html.light .border-b,
+html.light .border {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+nav.bg-luxury-charcoal,
+nav.bg-white {
+  background-color: var(--nav-surface) !important;
+  border-bottom: 1px solid var(--nav-border) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+html.light nav {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.brand-logo-text {
+  color: var(--brand-logo) !important;
+  transition: color 0.3s ease;
+}
+
+.brand-subtitle-text {
+  color: var(--brand-subtitle) !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link-item {
+  color: var(--nav-text) !important;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--nav-text-hover);
+  transition: width 0.3s ease;
+}
+
+.nav-link-item:hover {
+  color: var(--nav-text-hover) !important;
+}
+
+.nav-link-item:hover::after {
+  width: 100%;
+}
+
+.nav-link-item:focus-visible {
+  outline: 2px solid var(--nav-text-hover);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.hero-title,
+.hero-subtitle {
+  color: #ffffff !important;
+}
+
+html.light .hero-title,
+html.light .hero-subtitle {
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+html.light .hero-subtitle {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }

@@ -1,90 +1,105 @@
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+    const location = useLocation();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
 
-  return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="luxury-container">
-        <div className="flex justify-between items-center py-4">
-          <Link to="/" className="flex items-center">
-            <span className="font-serif text-2xl font-bold text-luxury-navy">VishalNexus</span>
-            <span className="ml-2 text-xs uppercase tracking-widest text-luxury-gold">Refined Homes</span>
-          </Link>
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-          
-          <div className="hidden md:flex space-x-8">
-            <Link to="/" className="font-medium text-gray-700 hover:text-luxury-navy transition-colors">Home</Link>
-            <Link to="/about" className="font-medium text-gray-700 hover:text-luxury-navy transition-colors">About</Link>
-            <Link to="/buy" className="font-medium text-gray-700 hover:text-luxury-navy transition-colors">Buy</Link>
-            <Link to="/rent" className="font-medium text-gray-700 hover:text-luxury-navy transition-colors">Rent</Link>
-            <Link to="/contact" className="font-medium text-gray-700 hover:text-luxury-navy transition-colors">Contact</Link>
-          </div>
+    useEffect(() => {
+        if (theme === 'light') {
+            document.documentElement.classList.add('light');
+        } else {
+            document.documentElement.classList.remove('light');
+        }
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
-          
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="text-gray-700 hover:text-luxury-navy"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
+    const toggleTheme = () => {
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+    };
 
-        
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t">
-            <div className="flex flex-col space-y-4">
-              <Link 
-                to="/" 
-                className="font-medium text-gray-700 hover:text-luxury-navy transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link 
-                to="/about" 
-                className="font-medium text-gray-700 hover:text-luxury-navy transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link 
-                to="/buy" 
-                className="font-medium text-gray-700 hover:text-luxury-navy transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Buy
-              </Link>
-              <Link 
-                to="/rent" 
-                className="font-medium text-gray-700 hover:text-luxury-navy transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Rent
-              </Link>
-              <Link 
-                to="/contact" 
-                className="font-medium text-gray-700 hover:text-luxury-navy transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
+    const navLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Buy', path: '/buy' },
+        { name: 'Rent', path: '/rent' },
+        { name: 'About', path: '/about' },
+        { name: 'Contact', path: '/contact' },
+    ];
+
+    return (
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-luxury-navy py-3 shadow-luxury-glow-soft' : 'bg-transparent py-5'
+            }`}>
+            <div className="luxury-container flex justify-between items-center">
+                <Link to="/" className="flex flex-col items-center">
+                    <span className="font-serif text-2xl font-bold brand-logo-text">VishalNexus</span>
+                    <span className="text-[10px] uppercase tracking-[0.3em] brand-subtitle-text -mt-1">Refined Homes</span>
+                </Link>
+
+                <div className="hidden md:flex items-center space-x-8">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.name}
+                            to={link.path}
+                            className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full hover:bg-white/10 transition-colors"
+                        aria-label="Toggle theme"
+                    >
+                        {theme === 'dark' ? <Sun size={20} className="text-luxury-gold" /> : <Moon size={20} className="text-luxury-navy" />}
+                    </button>
+                </div>
+
+                <div className="md:hidden flex items-center space-x-4">
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full hover:bg-white/10 transition-colors"
+                    >
+                        {theme === 'dark' ? <Sun size={20} className="text-luxury-gold" /> : <Moon size={20} className="text-white" />}
+                    </button>
+                    <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+                        {isOpen ? <X size={28} /> : <Menu size={28} />}
+                    </button>
+                </div>
             </div>
-          </div>
-        )}
-      </div>
-    </nav>
-  );
+
+            <div className={`md:hidden absolute w-full bg-luxury-navy transition-all duration-300 ${isOpen ? 'max-h-screen opacity-100 py-6' : 'max-h-0 opacity-0 overflow-hidden py-0'
+                }`}>
+                <div className="flex flex-col items-center space-y-6">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.name}
+                            to={link.path}
+                            className="text-lg text-white hover:text-luxury-gold transition-colors"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </nav>
+    );
 };
 
 export default Navbar;
