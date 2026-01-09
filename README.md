@@ -2,18 +2,18 @@
 
 A modern web application for luxury real estate listings, built with React, Vite, and Shadcn UI components.
 
-## 🚀 Features
+##  Features
 
-- ⚡️ [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
-- ⚛️ [React 18](https://reactjs.org/) - A JavaScript library for building user interfaces
-- 🎨 [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
-- 🎭 [Shadcn UI](https://ui.shadcn.com/) - Beautifully designed components
-- 🔄 [React Router](https://reactrouter.com/) - Declarative routing for React
-- 📊 [Recharts](https://recharts.org/) - A composable charting library
-- 🎨 [Framer Motion](https://www.framer.com/motion/) - Production-ready motion library
-- 🔍 [React Query](https://tanstack.com/query/latest) - Powerful data synchronization
+-  [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+-  [React 18](https://reactjs.org/) - A JavaScript library for building user interfaces
+-  [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+-  [Shadcn UI](https://ui.shadcn.com/) - Beautifully designed components
+-  [React Router](https://reactrouter.com/) - Declarative routing for React
+-  [Recharts](https://recharts.org/) - A composable charting library
+-  [Framer Motion](https://www.framer.com/motion/) - Production-ready motion library
+-  [React Query](https://tanstack.com/query/latest) - Powerful data synchronization
 
-## 📦 Installation
+##  Installation
 
 1. Clone the repository:
 ```bash
@@ -37,7 +37,7 @@ npm run dev
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview the production build
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 ├── public/          # Static assets
@@ -50,13 +50,13 @@ npm run dev
 └── vite.config.js  # Vite configuration
 ```
 
-## 🔧 Configuration
+##  Configuration
 
 - Tailwind CSS for styling
 - ESLint for code linting
 - PostCSS for CSS processing
 - Vite for fast development and building
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
